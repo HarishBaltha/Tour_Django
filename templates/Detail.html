@@ -1,0 +1,33 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include "navbar.html" %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h3 style="text-align: center; font-weight: bold; font-size: 40px;">{{ tourplace.Place }}</h3><hr>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ tourplace.Image.url }}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h4>{{ tourplace.Place }}</h4>
+            <h5><span style="color: dodgerblue; font-weight: bold">Places to visit</span> : {{ tourplace.Inside_Places }}</h5>
+            <h5><span style="color: dodgerblue; font-weight: bold">Actual Price</span> : <strike>Rs. {{ tourplace.Marked_Price }}</strike></h5>
+            <h5><span style="color: dodgerblue; font-weight: bold">Offer Price</span> : Rs. {{ tourplace.Confirm_Price }}</h5>
+            <a href="#" class="btn btn-info">Schedule Journey</a>
+            <hr>
+            <h5 style="text-align: center">Description</h5>
+            <p>{{ tourplace.Details }}</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

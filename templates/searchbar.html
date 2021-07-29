@@ -1,0 +1,97 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include "navbar.html" %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search Result Page</title>
+    <style type="text/css">
+        div.gallery {
+          border: 1px solid #ccc;
+          border-radius: 10px;
+        }
+
+        div.gallery:hover {
+          border: 1px solid #777;
+        }
+
+        div.gallery img {
+          width: 100%;
+          height: 350px;
+          border-radius: 10px;
+        }
+
+        div.desc {
+          padding: 15px;
+          text-align: center;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        .responsive {
+          padding: 0 6px;
+          float: left;
+          width: 24.99999%;
+          margin-left: 500px;
+        }
+
+        .btn{
+            color: black;
+            border: 1px solid black;
+        }
+
+        .name{
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Lobster Two', cursive;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        @media only screen and (max-width: 700px) {
+          .responsive {
+            width: 49.99999%;
+            margin: 6px 0;
+          }
+        }
+
+        @media only screen and (max-width: 500px) {
+          .responsive {
+            width: 100%;
+          }
+        }
+    </style>
+</head>
+<body>
+<div class="name">
+    <h3>The Result for your search is: </h3>
+</div>
+{% if result %}
+    {% for x in result %}
+        <div class="responsive" style="margin-top: 40px">
+            <div class="gallery">
+                <a target="_blank" href="{{ x.Image.url }}">
+                    <img src="{{ x.Image.url }}" alt="Cinque Terre">
+                </a>
+                <div class="desc"><a href="{% url 'details' x.slug %}" style="font-family: 'Lobster Two', cursive; font-size: 25px; font-weight: bold;" class="btn btn-outline-primary">{{ x.Place }}</a>
+                    <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 15px;">No. of Persons can Travel: </span><span style="font-weight: bold;">{{ x.Persons }}</span></p>
+                    <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 20px;">Actual Price: </span><strike>Rs. {{ x.Marked_Price }}</strike></p>
+                    <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 20px;">Offer Price: </span>Rs. {{ x.Confirm_Price }}</p>
+                    <a href="#" class="btn btn-outline-secondary">Schedule Journey</a>
+                    <p>For details click on {{ x.Place }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h2>Sorry Couldn't find for what you are looking. We will look into that</h2>
+{% endif %}
+</body>
+</html>
+{% endblock %}

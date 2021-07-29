@@ -1,0 +1,157 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include "navbar.html" %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Login Page</title>
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/Login.jpg' %});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .admin_head{
+            position: relative;
+            border: none;
+            border-radius: 10px;
+            width: 40%;
+            height: 400px;
+            text-align: center;
+            margin-left: 400px;
+            margin-top: 100px;
+            background-color: white;
+        }
+
+        .admin_login h3{
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .admin_name{
+            position: relative;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .admin_name input{
+            width: 60%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+
+        .admin_name input:hover{
+            color: dodgerblue;
+        }
+
+        .admin_password{
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .admin_password input{
+            width: 60%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid ;
+        }
+
+        .admin_password input:hover{
+            color: dodgerblue;
+        }
+
+        ::placeholder{
+            padding-left: 20px;
+            font-size: 17px;
+            font-weight: normal;
+        }
+
+        .admin_button{
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .admin_button{
+            font-size: 14px;
+        }
+
+        @media screen and (max-width:1000px){
+            .admin_head{
+                width: 90%;
+                height: 350px;
+                margin-left: 20px;
+                margin-top: 100px;
+
+            }
+
+            .admin_login h3{
+                padding-top: 30px;
+                font-size: 20px;
+            }
+
+            .admin_name{
+                margin-top: 30px;
+            }
+
+            .admin_name input{
+                width: 80%;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            .admin_password{
+                margin-top: 10px;
+            }
+
+            .admin_password input{
+                width: 80%;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            ::placeholder{
+                font-size: 14px;
+            }
+
+            .admin_button{
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'admin_login' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="admin_head">
+        <img src="{% static 'images/Harish_logo1-removebg-preview.png' %}" style="height: 70px; width: 85px; font-weight: bold; background-color: black; border-radius: 10px; margin-top: 20px;">
+        <div class="admin_login">
+            <h3>To get Started, Login here please</h3>
+        </div>
+        <div class="admin_name">
+            <input type="text" placeholder="Username" required name="a1">
+        </div>
+        <div class="admin_password">
+            <input type="password" placeholder="Password" required name="a2"><br>
+        </div>
+        <div class="admin_button">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="admin_message">
+            {% if error %}
+                {{ error }}
+            {% endif %}
+        </div>
+    </div>
+</form>
+</body>
+</html>
+{% endblock %}

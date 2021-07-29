@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <style type="text/css">
+        .navbar-nav{
+            position: relative;
+            padding-left: 600px;
+        }
+
+        .btn{
+            position: relative;
+            margin-right: 10px;
+            color: white;
+            border: none;
+        }
+
+        @media screen and (max-width:1030px){
+            .navbar-nav{
+                padding-left: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <img src="{% static 'images/Harish_logo1-removebg-preview.png' %}" style="height: 55px; width: 95px; font-weight: bold">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="#">Login</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="btn btn-outline-primary dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li><a class="dropdown-item" href="#">Pics & Videos</a></li>
+          </ul>
+        </li>
+        <form class="d-flex" action="{% url 'searchbar' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="Speech Recognition"></label>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchs" id="speechToText" onclick=record()>
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+          <script>
+                function record() {
+                    var recognition = new webkitSpeechRecognition();
+                    recognition.lang = "en-GB";
+
+                    recognition.onresult = function (event) {
+                        console.log(event);
+                        document.getElementById('speechToText').value = event.results[0][0].transcript
+                    };
+
+                    recognition.start();
+                }
+            </script>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,145 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include "navbar.html" %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Admin Home Page</title>
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/Login1.jpg' %});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .admin_detail{
+            position: relative;
+            border: none;
+            border-radius: 10px;
+            width: 55%;
+            height: 950px;
+            text-align: center;
+            margin-left: 320px;
+            margin-top: 100px;
+            background-color: white;
+        }
+
+        .upload h3{
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .admin_upload{
+            position: relative;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .admin_upload input{
+            width: 60%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+
+        .admin_upload input:hover{
+            color: dodgerblue;
+        }
+
+        ::placeholder{
+            padding-left: 20px;
+            font-size: 17px;
+            font-weight: normal;
+        }
+
+        .button_admin{
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width:1000px){
+            .admin_detail{
+            width: 90%;
+            margin-left: 20px;
+            margin-top: 80px;
+        }
+
+        .upload h3{
+            padding-top: 20px;
+            font-size: 20px;
+        }
+
+        .admin_upload{
+            margin-top: 40px;
+        }
+
+        .admin_upload input{
+            width: 90%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        ::placeholder{
+            padding-left: 10px;
+            font-size: 14px;
+        }
+
+        .button_admin{
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'Admin_Details' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="admin_detail">
+        <img src="{% static 'images/Harish_logo1-removebg-preview.png' %}" style="height: 70px; width: 85px; font-weight: bold; background-color: black; border-radius: 10px; margin-top: 20px;">
+        <div class="upload">
+            <h3>Upload the details here</h3>
+        </div>
+        <div class="admin_upload">
+            <input type="text" placeholder="Country, State, City Name" required name="p1">
+        </div>
+        <div class="admin_upload">
+            <input type="text" placeholder="slug name" required name="p2">
+        </div>
+        <div class="admin_upload">
+            <input type="text" placeholder="Special Places in the Selected Country, State, City" required name="p3">
+        </div>
+        <div class="admin_upload">
+            <input type="text" placeholder="Total number of persons can Travel" required name="p4">
+        </div>
+        <div class="admin_upload">
+            <input type="file" placeholder="Image" required name="p5">
+        </div>
+        <div class="admin_upload">
+            <input type="text" placeholder="Details about Place" required name="p6">
+        </div>
+        <div class="admin_upload">
+            <input type="number" placeholder="Actual Price" required name="p7">
+        </div>
+        <div class="admin_upload">
+            <input type="number" placeholder="Offer Price" required name="p8">
+        </div>
+        <div class="button_admin">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="succes_message">
+            {% for x in messages %}
+                {{ x }}
+            {% endfor %}
+        </div>
+    </div>
+</form>
+<br>
+</body>
+</html>
+{% endblock %}
