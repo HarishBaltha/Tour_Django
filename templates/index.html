@@ -65,24 +65,49 @@
             width: 30%;
             margin-left: 100px;
             margin-top: 20px;
+        }
+
+        .child-admin a{
             color: white;
+            text-decoration: none;
+        }
+
+        .child-admin a:hover{
+            color: coral;
         }
 
         .footer_child2{
             float: left;
-            width: 25%;
+            width: 10%;
             margin-top: 20px;
-            margin-left: 230px;
+            margin-left: 100px;
             font-size: 17px;
             color: white;
+        }
+
+        .fa a{
+            color: white;
+            text-decoration: none;
+        }
+
+        .fa a:hover{
+            color: coral;
         }
 
         .footer_child3{
             float: right;
             width: 30%;
-            margin-left: 180px;
+            margin-left: 250px;
             margin-top: 20px;
+        }
+
+        .child-service a{
             color: white;
+            text-decoration: none;
+        }
+
+        .child-service a:hover{
+            color: coral;
         }
 
         .footer-bottom{
@@ -96,20 +121,8 @@
             padding-top: 10px;
         }
 
-        .child-admin:hover{
-            color: coral;
-        }
-
-        .child-service:hover{
-            color: coral;
-        }
-
         .footer-bottom p:hover{
             color: dodgerblue;
-        }
-
-        .footer_child2 .fa:hover{
-            color: coral;
         }
 
         .links .fa{
@@ -145,8 +158,6 @@
 
             .child-admin{
                 font-size: 12px;
-                color: white;
-                text-decoration: none;
             }
 
             .footer_child2{
@@ -196,29 +207,25 @@
 </div>
 <section class="footer">
         <section class="footer_child1">
-            <div>
-                <p class="child-admin"><a href="{% url 'admins' %}">-> Admin Page</a></p>
-                <p class="child-admin">-> Our Policies</p>
-                <p class="child-admin">-> Instructions</p>
-                <p class="child-admin">-> Our Contact Details</p>
-                <p class="child-admin">-> Our Sponsors</p>
-            </div>
+            <p class="child-admin"><a href="{% url 'admins' %}">-> Admin Page</a></p>
+            <p class="child-admin"><a href="#"> -> Our Policies</a></p>
+            <p class="child-admin"><a href="#"> -> Instructions</a></p>
+            <p class="child-admin"><a href="#">-> Our Contact Details</a></p>
+            <p class="child-admin"><a href="#">-> Our Sponsors</a></p>
         </section>
-        <section>
-            <div class="footer_child2">
-                <i class="fa fa-instagram" aria-hidden="true"> Instagram</i>
-                <i class="fa fa-facebook-square" aria-hidden="true"> Facebook</i>
-                <i class="fa fa-twitter" aria-hidden="true"> Twitter</i>
-                <i class="fa fa-google-plus" aria-hidden="true"> Google Plus</i>
-                <i class="fa fa-linkedin" aria-hidden="true"> Linkedin</i>
-            </div>
+        <section class="footer_child2">
+            <i class="fa fa-instagram" aria-hidden="true"><a href="#"> Instagram</a></i>
+            <i class="fa fa-facebook-square" aria-hidden="true"><a href="#"> Facebook</a></i>
+            <i class="fa fa-twitter" aria-hidden="true"><a href="#"> Twitter</a></i>
+            <i class="fa fa-google-plus" aria-hidden="true"><a href="#"> Google Plus</a></i>
+            <i class="fa fa-linkedin" aria-hidden="true"><a href="#"> Linkedin</a></i>
         </section>
         <section class="footer_child3">
-            <p class="child-service">-> Our Donations</p>
-            <p class="child-service">-> Our Main Branch</p>
-            <p class="child-service">-> Our Services</p>
-            <p class="child-service">-> Our Customer Support Help</p>
-            <p class="child-service">-> 24x7 Services</p>
+            <p class="child-service"><a href="#">-> Our Donations</a></p>
+            <p class="child-service"><a href="#">-> Our Main Branch</a></p>
+            <p class="child-service"><a href="#">-> Our Services</a></p>
+            <p class="child-service"><a href="#">-> Our Customer Support Help</a></p>
+            <p class="child-service"><a href="#">-> 24x7 Services</a></p>
         </section>
 </section>
 <div class="footer-bottom">

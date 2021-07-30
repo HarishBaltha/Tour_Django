@@ -1,0 +1,163 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include "navbar.html" %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Register Page</title>
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/Register1-bg.jpg' %});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+
+        }
+
+        .register_detail{
+            position: relative;
+            border: none;
+            border-radius: 10px;
+            width: 55%;
+            height: 950px;
+            text-align: center;
+            margin-left: 320px;
+            margin-top: 100px;
+            background-color: white;
+            opacity: 70%;
+        }
+
+        .register h3{
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .register_upload{
+            position: relative;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .register_upload input{
+            width: 60%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+
+        .register_upload input:hover{
+            color: dodgerblue;
+        }
+
+        ::placeholder{
+            padding-left: 20px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        .button_register{
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width:1000px) {
+            .register_detail {
+                width: 90%;
+                margin-left: 20px;
+                margin-top: 80px;
+            }
+
+            .register h3 {
+                padding-top: 20px;
+                font-size: 20px;
+            }
+
+            .register_upload {
+                margin-top: 40px;
+            }
+
+            .register_upload input {
+                width: 90%;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            ::placeholder {
+                padding-left: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'register_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="register_detail">
+        <img src="{% static 'images/Harish_logo1-removebg-preview.png' %}" style="height: 70px; width: 85px; font-weight: bold; background-color: black; border-radius: 10px; margin-top: 20px;">
+        <div class="register">
+            <h3>Register the details here</h3>
+        </div>
+        <div class="register_upload">
+            <input type="text" placeholder="Name" required name="r1">
+        </div>
+        <div class="register_upload">
+            <input type="text" placeholder="Username" required name="r2">
+        </div>
+        <div class="register_upload">
+            <input type="email" placeholder="Email Id" required name="r3">
+        </div>
+        <div class="register_upload">
+            <input type="number" placeholder="Contact Number" required name="r4">
+        </div>
+        <div class="register_upload">
+            <input type="password" placeholder="Password" required name="r5">
+        </div>
+        <div class="register_upload">
+            <input type="password" placeholder="Confirm Password" required name="r6">
+        </div>
+        <div class="register_upload">
+            <input type="text" placeholder="Address" required name="r7">
+        </div>
+        <div class="register_upload">
+            <input type="text" placeholder="Secret Info" required name="r8">
+        </div>
+        <a href="#">Secret Info?</a>
+        <div class="button_register">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        <div class="success_message">
+            {% for x in messages %}
+                {{ x }}
+            {% endfor %}
+            {% if error6 %}
+                {{ error6 }}
+            {% endif %}
+            {% if error %}
+                {{ error }}
+            {% endif %}
+            {% if error1 %}
+                {{ error1 }}
+            {% endif %}
+            {% if error2 %}
+                {{ error2 }}
+            {% endif %}
+            {% if error3 %}
+                {{ error3 }}
+            {% endif %}
+            {% if error4 %}
+                {{ error4 }}
+            {% endif %}
+            {% if error5 %}
+                {{ error5 }}
+            {% endif %}
+        </div>
+    </div>
+</form>
+<br>
+</body>
+</html>
+{% endblock %}

@@ -19,3 +19,22 @@ class TourPlace(models.Model):
 class AdminModel(models.Model):
     Username = models.CharField(max_length=100, unique=True)
     Password = models.CharField(max_length=100, unique=True)
+
+class RegisterModel(models.Model):
+    Name = models.CharField(max_length=30)
+    Username = models.CharField(max_length=30, unique=True)
+    Email = models.EmailField(max_length=20, unique=True)
+    Contact = models.IntegerField()
+    Address = models.CharField(max_length=120, null=True, blank=True)
+    Joined_on = models.DateTimeField(auto_now_add=True)
+    Password1 = models.CharField(max_length=15, unique=True)
+    Password2 = models.CharField(max_length=15)
+    Secret_Info = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.Username
+
+class LoginModel(models.Model):
+    Username = models.CharField(max_length=100, unique=True)
+    Password = models.CharField(max_length=100, unique=True)
+
