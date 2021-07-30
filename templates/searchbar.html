@@ -40,11 +40,6 @@
           margin-left: 500px;
         }
 
-        .btn{
-            color: black;
-            border: 1px solid black;
-        }
-
         .name{
             position: relative;
             text-align: center;
@@ -54,10 +49,36 @@
             font-size: 25px;
         }
 
+        .error h2{
+            margin-left: 230px;
+            margin-top: 100px;
+            font-size: 25px;
+            color: black;
+            border: 1px solid black;
+        }
+
+        .alert{
+            position: relative;
+            width: 50%;
+            margin-left: 350px;
+            margin-top: 50px;
+        }
+
         @media only screen and (max-width: 700px) {
           .responsive {
             width: 49.99999%;
             margin: 6px 0;
+          }
+
+          .error h2{
+            margin-left:10px;
+            font-size: 15px;
+          }
+
+          .alert{
+            width: 95%;
+            margin-left: 10px;
+            margin-top: 50px;
           }
         }
 
@@ -79,18 +100,25 @@
                 <a target="_blank" href="{{ x.Image.url }}">
                     <img src="{{ x.Image.url }}" alt="Cinque Terre">
                 </a>
-                <div class="desc"><a href="{% url 'details' x.slug %}" style="font-family: 'Lobster Two', cursive; font-size: 25px; font-weight: bold;" class="btn btn-outline-primary">{{ x.Place }}</a>
+                <div class="desc"><a href="{% url 'details' x.slug %}" style="font-family: 'Lobster Two', cursive; font-size: 25px; font-weight: bold; color: black; border: 1px solid black" class="btn btn-outline-primary">{{ x.Place }}</a>
                     <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 15px;">No. of Persons can Travel: </span><span style="font-weight: bold;">{{ x.Persons }}</span></p>
                     <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 20px;">Actual Price: </span><strike>Rs. {{ x.Marked_Price }}</strike></p>
                     <p style="text-align: center; font-weight: bold;"><span style="font-family: 'Satisfy', cursive; font-size: 20px;">Offer Price: </span>Rs. {{ x.Confirm_Price }}</p>
-                    <a href="#" class="btn btn-outline-secondary">Schedule Journey</a>
+                    <a href="#" style="color: black; border: 1px solid black" class="btn btn-outline-secondary">Schedule Journey</a>
                     <p>For details click on {{ x.Place }}</p>
                 </div>
             </div>
         </div>
     {% endfor %}
 {% else %}
-    <h2>Sorry Couldn't find for what you are looking. We will look into that</h2>
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div>
+            Sorry Couldn't find what you are looking for. We will look into that. Thank you <img src="{% static 'images/Sad_emoji.png' %}" style="height: 30px; width: 30px;">
+        </div>
+    </div>
 {% endif %}
 </body>
 </html>

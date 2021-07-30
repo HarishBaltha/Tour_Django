@@ -11,6 +11,7 @@ class TourPlace(models.Model):
     Details = models.TextField()
     Marked_Price = models.PositiveIntegerField()
     Confirm_Price = models.PositiveIntegerField()
+    Offer_Valid = models.DateTimeField()
 
     def __str__(self):
         return self.Place

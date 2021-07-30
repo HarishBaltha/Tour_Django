@@ -40,7 +40,8 @@ def Admin_Details(request):
     details = request.POST.get("p6")
     marked_price = request.POST.get("p7")
     confirm_price = request.POST.get("p8")
+    offer_valid = request.POST.get("p9")
     TourPlace(Place=place, slug=slug, Inside_Places=inside_place, Persons=persons, Image=image, Details=details,
-              Marked_Price=marked_price, Confirm_Price=confirm_price).save()
+              Marked_Price=marked_price, Confirm_Price=confirm_price, Offer_Valid=offer_valid).save()
     messages.success(request, "Uploaded Successfully")
     return render(request, "admin-home.html")
